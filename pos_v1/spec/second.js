@@ -9,44 +9,44 @@ beforeEach(function () {
 
   it ('should return number',function(){
 
-var generateAnswer = new GenerateAnswer();
-console.log(generateAnswer);
-      answer = generateAnswer.generate();
-      var tips= judgeNumber(answer) ;
+    var generateAnswer = new GenerateAnswer();
+    console.log(generateAnswer);
+    answer = generateAnswer.generate();
+    var tips= judgeNumber(answer) ;
 
-      expect(tips).toBe(true);
+    expect(tips).toBe(true);
 
   });
 
   it ('should return different',function(){
-var generateAnswer = new GenerateAnswer();
-console.log(generateAnswer);
-       answer = generateAnswer.generate();
-      var tips= judgeDifferent(answer) ;
 
-      expect(tips).toBe(true);
+    var generateAnswer = new GenerateAnswer();
+    console.log(generateAnswer);
+    answer = generateAnswer.generate();
+    var tips= judgeDifferent(answer) ;
+
+    expect(tips).toBe(true);
 
   });
 
   it ('should return random',function(){
 
-var generateAnswer = new GenerateAnswer();
-console.log(generateAnswer);
-       answer = generateAnswer.generate();
-      var tips= judgerandom(answer) ;
-
-      expect(tips).toBe(true);
+    var generateAnswer = new GenerateAnswer();
+    console.log(generateAnswer);
+    answer = generateAnswer.generate();
+    var tips= judgerandom(answer) ;
+    expect(tips).toBe(true);
 
   });
 
   it ('should return rightquantiy',function(){
-var generateAnswer = new GenerateAnswer();
-console.log(generateAnswer);
+    var generateAnswer = new GenerateAnswer();
+    console.log(generateAnswer);
 
-       answer = generateAnswer.generate()
-      var tips= judgequantity(answer) ;
+    answer = generateAnswer.generate()
+    var tips= judgequantity(answer) ;
 
-      expect(tips).toBe(true);
+    expect(tips).toBe(true);
 
 
   });
