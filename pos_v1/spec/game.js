@@ -5,30 +5,18 @@ describe('', function () {
     var compareNumber;
     var guess;
 
-var result = new CompareNumber();
-
-var guess_right = new Guess(generateAnswer, result);
-input = ['1316', '1234', 'a243','34567','2536'];
-
-generateAnswer = new GenerateAnswer();
-spyOn(generateAnswer, "generate").and.returnValue('1234');
-
-var result = new CompareNumber();
-
-var guess_right = new Guess(generateAnswer, result);
 
 
 
     beforeEach(function(){
+      compareNumber  = new CompareNumber();
+      generateAnswer = new GenerateAnswer();
 
-        input = ['1316', '1234', 'a243','34567','2536'];
 
-        generateAnswer = new GenerateAnswer();
-        spyOn(generateAnswer, "generate").and.returnValue('1234');
+      input = ['1316', '1234', 'a243','34567','2536'];
+      spyOn(generateAnswer, "generate").and.returnValue('1234');
 
-        var result = new CompareNumber();
-
-        var guess_right = new Guess(generateAnswer, result);
+      guess = new Guess( compareNumber,generateAnswer);
 
     });
 
@@ -38,10 +26,9 @@ var guess_right = new Guess(generateAnswer, result);
 
 
     it('start the game', function(){
-        var guess_right = new Guess(generateAnswer, result);
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
         var welcomeString = game.start();
-
         expect(generateAnswer.generate.calls.count()).toEqual(1);
         expect(welcomeString).toEqual('Welcome !');
         expect(game.number).toEqual(6);
@@ -49,7 +36,8 @@ var guess_right = new Guess(generateAnswer, result);
 
     it('input isnot repeated', function(){
 
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
 
 
         var judgeInput_0 = game.judgeInput(input[0]);
@@ -60,14 +48,16 @@ var guess_right = new Guess(generateAnswer, result);
 
     });
     it('inputs are digit',function(){
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
 
 
         var judgeInput_2 = game.judgeInput(input[2]);
         expect(judgeInput_2).toEqual(false);
     });
     it('the length of input is 4',function(){
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
 
 
         var judegInput_3 = game.judgeInput(input[3]);
@@ -77,7 +67,8 @@ var guess_right = new Guess(generateAnswer, result);
 
     it('input is equal to answer', function(){
 
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
 
 
         var answerString = game.judgeAnswer(input[1]);
@@ -87,8 +78,10 @@ var guess_right = new Guess(generateAnswer, result);
     });
 
     it('input is not equal to answer', function(){
+
         spyOn(resultString_right, "compare").and.returnValue('1A1B');
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
 
 
         var answerString = game.judgeAnswer(input[4]);
@@ -97,21 +90,22 @@ var guess_right = new Guess(generateAnswer, result);
 
     });
 
-    it('number modify is ok', function(){
+    it('number  is ok', function(){
 
-        var game = new Game(guess_right);
+        var guess = new Guess(compareNumber,generateAnswer);
+        var game = new Game(guess);
 
-        var number_5 = game.caculateNumber();
-        var number_4 = game.caculateNumber();
-        var number_3 = game.caculateNumber();
-        var number_2 = game.caculateNumber();
-        var number_1 = game.caculateNumber();
-        var number_0 = game.caculateNumber();
+        var number5 = game.caculateNumber();
+        var number4 = game.caculateNumber();
+        var number3 = game.caculateNumber();
+        var number2 = game.caculateNumber();
+        var number1 = game.caculateNumber();
+        var number0 = game.caculateNumber();
 
-        expect(number_5).toEqual(5);
-        expect(number_4).toEqual(4);
+        expect(number5).toEqual(5);
+        expect(number4).toEqual(4);
 
-        expect(number_0).toEqual('Game over !');
+        expect(number0).toEqual('Game over !');
     });
 
 })

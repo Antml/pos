@@ -20,7 +20,7 @@ Game.prototype.judgeInput = function(input){
     }
 
     if (/^\d+$/.test(input)){
-      return false
+      return false;
     }
 
     for(var i=0; i<input.length; i++){
@@ -36,7 +36,7 @@ Game.prototype.judgeAnswer = function(input){
 
     var judgeResults = this.guess.guess(input);
 
-    if(this.rightAnswer === input){
+    if(this.answer === input){
         return 'Congratulation !';
     }else{
         return judgeResults + ', start next game !';

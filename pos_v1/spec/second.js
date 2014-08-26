@@ -33,8 +33,9 @@ beforeEach(function () {
 
     var generateAnswer = new GenerateAnswer();
     console.log(generateAnswer);
-    answer = generateAnswer.generate();
-    var tips= judgerandom(answer) ;
+    answer1 = generateAnswer.generate();
+    answer2 = generateAnswer.generate();
+    var tips= judgerandom(answer1,answer2) ;
     expect(tips).toBe(true);
 
   });

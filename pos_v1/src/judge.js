@@ -27,15 +27,12 @@ function judgequantity(answer){
  else
    return true;
  }
- function judgerandom(){
-   var generateAnswer = new GenerateAnswer();
 
-   var answer1 = generateAnswer.generate();
-   var answer2 = generateAnswer.generate();
-   for (i=0;i<answer1.length;i++)
-     {
-       if (answer1[i] === answer2[i])
-         return false;
-     }
-     return true;
+function judgerandom(answer1,answer2){
+
+   if (answer1 === answer2){
+     return false;
+   }
+
+     else return true;
  }
