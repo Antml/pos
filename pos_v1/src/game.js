@@ -14,21 +14,21 @@ Game.prototype.start = function start(){
 Game.prototype.judgeInput = function(input){
 
     var judgeValue = true;
-    var digit = '0123456789';
+
     if(input.length != 4){
         return false;
     }
 
-    if (/^\d+$/.test(input)){
-      return false;
+    judgeValue = (/^\d+$/.test(input));
+
+    var one = input[0];
+    var two = input[1];
+    var three = input[2];
+    var four = input[3];
+    if (one === two|| one ===three||one ===four||two === three||three === four){
+      judgeValue = false;
     }
 
-    for(var i=0; i<input.length; i++){
-        if( digit.search(input.charAt(i)) === -1 ){
-            judgeValue = false;
-            break;
-        }
-      }
       return judgeValue;
 };
 

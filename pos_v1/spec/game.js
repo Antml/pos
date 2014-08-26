@@ -39,7 +39,7 @@ describe('', function () {
         var guess = new Guess(compareNumber,generateAnswer);
         var game = new Game(guess);
 
-
+        
         var judgeInput_0 = game.judgeInput(input[0]);
         var judgeInput_1 = game.judgeInput(input[1]);
 
@@ -47,7 +47,7 @@ describe('', function () {
         expect(judgeInput_1).toEqual(true);
 
     });
-    it('inputs are digit',function(){
+    it('inputs are number',function(){
         var guess = new Guess(compareNumber,generateAnswer);
         var game = new Game(guess);
 
@@ -70,7 +70,7 @@ describe('', function () {
         var guess = new Guess(compareNumber,generateAnswer);
         var game = new Game(guess);
 
-
+        game.start();
         var answerString = game.judgeAnswer(input[1]);
 
         expect(answerString).toEqual('Congratulation !');
@@ -79,11 +79,11 @@ describe('', function () {
 
     it('input is not equal to answer', function(){
 
-        spyOn(resultString_right, "compare").and.returnValue('1A1B');
+        spyOn(compareNumber, "compare").and.returnValue('1A1B');
         var guess = new Guess(compareNumber,generateAnswer);
         var game = new Game(guess);
 
-
+        game.start();
         var answerString = game.judgeAnswer(input[4]);
 
         expect(answerString).toBe('1A1B' + ', start next game !');
@@ -94,6 +94,8 @@ describe('', function () {
 
         var guess = new Guess(compareNumber,generateAnswer);
         var game = new Game(guess);
+
+        game.start();
 
         var number5 = game.caculateNumber();
         var number4 = game.caculateNumber();
